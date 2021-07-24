@@ -1,0 +1,25 @@
+module fatb();
+  reg a,b,c;
+  wire sum,carry;
+   fa x(a,b,c,sum,carry);
+    initial
+      begin
+        $dumpfile("fatb.vcd");
+        $dumpvars(0,fatb);
+      end
+    initial
+      begin
+         #10 a=0;b=0;c=0;
+         #10 a=0;b=0;c=1;
+         #10 a=0;b=1;c=0;
+         #10 a=0;b=1;c=1;
+         #10 a=1;b=0;c=0;
+         #10 a=1;b=0;c=1;
+         #10 a=1;b=1;c=0;
+         #10 a=1;b=1;c=1;
+        #200 $finish;
+        
+        
+      end
+endmodule
+    
