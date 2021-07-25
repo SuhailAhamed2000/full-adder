@@ -1,0 +1,23 @@
+module fulladder(a,b,cin,sum,carry);
+  input a,b,cin;
+  output sum,carry;
+  wire w1,w2,w3;
+  xor g1(w1,a,b);
+  xor g2(sum,w1,cin);
+  and g3(w3,w1,cin);
+  and g4(w2,a,b);
+  or  g5(carry,w2,w3);
+endmodule
+
+module ripple_adder(x,y,cin,sum,carry);
+  input [3:0]x,y;
+  input cin;
+  output [3:0]sum;
+  output carry;
+  wire w1,w2,w3;
+  fulladder p(x[0],y[0],cin,sum[0],w1);
+  fulladder q(x[1],y[1],w1,sum[1],w2);
+  fulladder r(x[2],y[2],w2,sum[2],w3);
+  fulladder s(x[3],y[3],w3,sum[3],carry);
+endmodule
+  
